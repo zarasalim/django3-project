@@ -1,0 +1,31 @@
+ <!DOCTYPE html>
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список сотрудников</title>
+</head>
+<body>
+    <h1>Список сотрудников</h1>
+
+```
+{% for employee in employees %}
+    <div>
+        <h2>
+            <a href="{% url 'employee_detail' employee.pk %}">
+                {{ employee.first_name }} {{ employee.last_name }}
+            </a>
+        </h2>
+        <p>Пол: {{ employee.gender }}</p>
+        <p>Навыки: {{ employee.skills }}</p>
+    </div>
+    <hr>
+{% empty %}
+    <p>Сотрудников пока нет.</p>
+{% endfor %}
+
+<a href="{% url 'home' %}">На главную</a>
+```
+
+</body>
+</html>

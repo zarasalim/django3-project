@@ -1,0 +1,31 @@
+ <!DOCTYPE html>
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Карточка сотрудника</title>
+</head>
+<body>
+    <h1>{{ employee.first_name }} {{ employee.last_name }}</h1>
+
+```
+<p>Пол: {{ employee.gender }}</p>
+<p>Навыки: {{ employee.skills }}</p>
+
+<h2>Фотографии</h2>
+{% for photo in employee.images.all %}
+    <div>
+        <img src="{{ photo.image.url }}"
+             alt="Фото сотрудника"
+             width="200">
+        <p>Порядок фотографии: {{ photo.order }}</p>
+    </div>
+{% empty %}
+    <p>Фотографий пока нет.</p>
+{% endfor %}
+
+<a href="{% url 'employee_list' %}">Назад к списку сотрудников</a>
+```
+
+</body>
+</html>
